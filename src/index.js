@@ -16,5 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keyup', (e)=>{
         canvas.paddle.keyUpHandler(e.keyCode);
     });
+    document.addEventListener('mousemove', (e)=>{
+        canvas.paddle.mouseMoveHandler({
+            clientX: e.clientX,
+            canvasOffset: canvas.me.offsetLeft,
+            width: canvas.me.width
+        });
+
+    });
     canvas.loop();
 });

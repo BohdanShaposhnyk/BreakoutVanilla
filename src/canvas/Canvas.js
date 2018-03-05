@@ -88,7 +88,7 @@ export default class Canvas {
             this.draw(x, y);
             x += dx;
             y += dy;
-        }, 8);
+        }, 10);
 
     }
 

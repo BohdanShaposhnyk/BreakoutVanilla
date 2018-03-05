@@ -22,8 +22,8 @@ export default class Paddle {
     }
 
     draw() {
-        if (this.leftPressed && this.position.x > 0) this.position.x -= 7;
-        if (this.rightPressed && this.position.x < canvasSize.width - this.width) this.position.x +=7;
+        if (this.leftPressed && this.position.x > 0) this.position.x -= 5;
+        if (this.rightPressed && this.position.x < canvasSize.width - this.width) this.position.x +=5;
         this.context.beginPath();
         this.context.rect(this.position.x, canvasSize.height-this.height, this.width, this.height);
         this.context.fillStyle = "#0095DD";
@@ -50,6 +50,13 @@ export default class Paddle {
             case 37:
                 this.leftPressed = false;
                 break;
+        }
+    }
+
+    mouseMoveHandler({ clientX, canvasOffset, width }) {
+        const relativeX = clientX - canvasOffset;
+        if (relativeX > 0 && relativeX < width) {
+            this.position.x = relativeX - this.width/2;
         }
     }
 }
